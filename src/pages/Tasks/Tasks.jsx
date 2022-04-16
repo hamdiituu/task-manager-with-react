@@ -1,15 +1,14 @@
-import { Header, Card, TaskItem } from "../../components";
+import { Card, TaskItem } from "../../components";
 
 function Tasks(params) {
-  const tasks = ["test"];
+  const tasks = ["test", "test3"];
   return (
     <>
-      <Header />
       <Card
         isLoading={false}
-        title={"Tamamlanmamış görevlerim"}
-        content={tasks.map((t) => {
-          return <TaskItem />;
+        title={"Tüm görevlerim"}
+        content={tasks.map((t, index) => {
+          return <TaskItem key={index} />;
         })}
       />
     </>

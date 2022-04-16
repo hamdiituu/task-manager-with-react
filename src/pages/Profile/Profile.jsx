@@ -1,8 +1,7 @@
-import { Card, Header } from "../../components";
+import { Card } from "../../components";
 function Profile(params) {
   return (
     <>
-      <Header />
       <Card title={"Profilim"} content={<p>Kullanıcı Adı </p>} />
     </>
   );
