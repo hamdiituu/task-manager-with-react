@@ -5,6 +5,7 @@ function Home(params) {
     <>
       <Header />
       <TaskWrapper
+        tasks={["test", "merhaba"]}
         title={"Tamamlanmamış görevlerim"}
         bottomWidget={
           <small className="d-block text-end mt-3">

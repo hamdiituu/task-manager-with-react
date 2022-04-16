@@ -1,7 +1,7 @@
 function TaskItem(params) {
   return (
     <div className="d-flex text-muted pt-3">
-      <svg
+      {/* <svg
         className="bd-placeholder-img flex-shrink-0 me-2 rounded"
         width="32"
         height="32"
@@ -16,7 +16,7 @@ function TaskItem(params) {
         <text x="50%" y="50%" fill="#007bff" dy=".3em">
           32x32
         </text>
-      </svg>
+      </svg> */}
 
       <p className="pb-3 mb-0 small lh-sm border-bottom">
         <strong className="d-block text-gray-dark">@username</strong>
