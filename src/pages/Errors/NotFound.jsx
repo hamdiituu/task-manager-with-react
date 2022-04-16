@@ -15,7 +15,11 @@ function NotFound(params) {
             </span>
 
             <div className="card-body mx-auto">
-              <Link type="button" to={"/"} className="btn btn-dark text-white">
+              <Link
+                type="button"
+                to={"/"}
+                className="btn btn-lg btn-dark text-white"
+              >
                 Siteye dön
               </Link>
             </div>
