@@ -27,8 +27,7 @@ function Header(params) {
           </ul>
 
           <div className="dropdown text-end">
-            <a
-              href="#"
+            <p
               className="d-block link-dark text-decoration-none dropdown-toggle"
               id="userDropdown"
               data-bs-toggle="dropdown"
@@ -41,7 +40,7 @@ function Header(params) {
                 height="32"
                 className="rounded-circle"
               />
-            </a>
+            </p>
             <ul
               className="dropdown-menu text-small"
               aria-labelledby="userDropdown"
@@ -61,9 +60,9 @@ function Header(params) {
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                {/* <a className="dropdown-item" href="#">
                   Çıkış
-                </a>
+                </a> */}
               </li>
             </ul>
           </div>
