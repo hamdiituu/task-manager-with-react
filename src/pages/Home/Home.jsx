@@ -11,6 +11,13 @@ function Home(params) {
           return <TaskItem key={index} />;
         })}
       />
+      <Card
+        isLoading={false}
+        title={"Tamamlanmış görevlerim"}
+        content={tasks.map((t, index) => {
+          return <TaskItem key={index} />;
+        })}
+      />
     </>
   );
 }
