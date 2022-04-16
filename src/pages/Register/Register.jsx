@@ -41,7 +41,7 @@ function Register(params) {
                   </label>
                 </div>
 
-                <button className="w-100 btn btn-lg btn-primary" type="submit">
+                <button className="w-100 btn btn-lg btn-dark" type="submit">
                   Hesap oluştur
                 </button>
               </form>

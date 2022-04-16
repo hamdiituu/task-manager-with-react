@@ -33,7 +33,7 @@ function Login(params) {
                     <input type="checkbox" value="remember-me" /> Beni hatırla
                   </label>
                 </div>
-                <button className="w-100 btn btn-lg btn-primary" type="submit">
+                <button className="w-100 btn btn-lg btn-dark" type="submit">
                   Giriş yap
                 </button>
               </form>
