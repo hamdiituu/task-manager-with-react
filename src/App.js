@@ -1,7 +1,7 @@
 import Router from "./router";
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="w-100">
       <Router />
     </div>
   );
