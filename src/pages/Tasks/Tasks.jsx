@@ -1,6 +1,6 @@
-import { Card, Header, TaskItem } from "../../components";
+import { Header, Card, TaskItem } from "../../components";
 
-function Home(params) {
+function Tasks(params) {
   const tasks = ["test"];
   return (
     <>
@@ -16,4 +16,4 @@ function Home(params) {
   );
 }
 
-export default Home;
+export default Tasks;
