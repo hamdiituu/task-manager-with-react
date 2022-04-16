@@ -3,3 +3,4 @@ export { default as TaskItem } from "./Task/TaskItem";
 export { default as BorderSpinner } from "./Spinner/BorderSpinner";
 export { default as Card } from "./Card/Card";
 export { default as MainLayout } from "./Layout/MainLayout";
+export { default as Alert } from "./Alert/Alert";
