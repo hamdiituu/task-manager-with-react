@@ -1,6 +1,6 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import { MainLayout } from "./components";
-import { Home, Register, Login, Tasks, Profile } from "./pages";
+import { Home, Register, Login, Tasks, Profile, NotFound } from "./pages";
 
 function Router() {
   return (
@@ -18,6 +18,7 @@ function Router() {
       </Route>
       <Route path={"/login"} element={<Login />} />
       <Route path={"/register"} element={<Register />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
