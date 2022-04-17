@@ -2,14 +2,10 @@ import { Link } from "react-router-dom";
 import { useDispatch, connect } from "react-redux";
 import { login } from "./redux/actions";
 import { Alert } from "../../components";
-import { useEffect } from "react";
+
 function Login(props) {
   const { loginState } = props;
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(props.loginState);
-  }, [props]);
 
   const handleLoginForm = (e) => {
     e.preventDefault();
