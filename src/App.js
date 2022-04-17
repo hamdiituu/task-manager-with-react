@@ -1,9 +1,10 @@
 import Router from "./router";
 import { Provider } from "react-redux";
-import sliceStore from "./store/slice/store";
+import reduxStore from "./store/redux/store";
+
 function App() {
   return (
-    <Provider store={sliceStore}>
+    <Provider store={reduxStore}>
       <div className="w-100">
         <Router />
       </div>

@@ -50,8 +50,8 @@ const slice = createSlice({
   },
 });
 
-const { actions, reducer } = slice;
-
-export const {} = actions;
+//const { actions, reducer } = slice;
+const { reducer } = slice;
+//export const {} = actions;
 
 export default reducer;

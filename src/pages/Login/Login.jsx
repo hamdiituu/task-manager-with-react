@@ -1,16 +1,38 @@
 import { Link } from "react-router-dom";
+import { useDispatch, connect } from "react-redux";
+import { login } from "./redux/actions";
+import { Alert } from "../../components";
+import { useEffect } from "react";
+function Login(props) {
+  const { loginState } = props;
+  const dispatch = useDispatch();
 
-function Login(params) {
+  useEffect(() => {
+    console.log(props.loginState);
+  }, [props]);
+
+  const handleLoginForm = (e) => {
+    e.preventDefault();
+    const params = {
+      email: e.target.elements.email.value,
+      password: e.target.elements.password.value,
+    };
+    dispatch(login(params));
+  };
   return (
     <div className="container-fluid">
       <div className="row mt-5">
         <div className="d-flex justify-content-center">
           <div className="col-12 col-sm-10 col-md-6 col-lg-4">
+            <Alert theme={loginState.alertTheme} closeButton={true}>
+              {loginState.message}
+            </Alert>
             <main className="form-signin">
-              <form>
+              <form onSubmit={handleLoginForm}>
                 <h1 className="h3 mb-5 fw-light">Giriş yap</h1>
                 <div className="form-floating mb-3">
                   <input
+                    name="email"
                     type="email"
                     className="form-control"
                     id="floatingInputEmail"
@@ -20,6 +42,7 @@ function Login(params) {
                 </div>
                 <div className="form-floating">
                   <input
+                    name="password"
                     type="password"
                     className="form-control"
                     id="floatingInputPassword"
@@ -48,4 +71,19 @@ function Login(params) {
   );
 }
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    loginState: state.login,
+  };
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     // dispatching plain actions
+//     login: (params) => dispatch(login(params)),
+
+//     // reset: () => dispatch({ type: 'RESET' }),
+//   }
+// }
+
+export default connect(mapStateToProps)(Login);
