@@ -14,7 +14,12 @@ const ProfileProvider = ({ children }) => {
         console.log("calling fetch user");
         setFetching(true);
         try {
-            const { data, status } = await get("/users/me");
+            const { data, status } = await get("/users/me", {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem("react-local-app-state")).login.token}`
+                }
+            });
+
             if (status !== 200) {
                 throw data;
             }

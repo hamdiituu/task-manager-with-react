@@ -36,12 +36,7 @@ instance.interceptors.request.use(
 );
 
 export const get = (url, params = null) => {
-  return instance.get(url, {
-    params: params,
-    //   headers: {
-    //     Authorization: "Bearer " + _getToken(),
-    //   },
-  });
+  return instance.get(url, params);
 };
 
 export const post = (url, params = null) => {
