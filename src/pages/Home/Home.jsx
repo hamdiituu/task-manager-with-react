@@ -9,6 +9,7 @@ function Home(params) {
     const { isFetching, data, isError, message } = useSelector((s) => s.home);
 
     useEffect(() => {
+        console.log("calling 12");
         dispatch(getAllTasks());
     }, []);
 
