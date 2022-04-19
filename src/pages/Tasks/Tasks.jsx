@@ -1,42 +1,38 @@
 import { Card, TaskItem } from "../../components";
 import { useEffect, useState } from "react";
-import { getItem } from "../../utils/localStorage";
-import { get } from "../../utils/networking";
+import { connect } from "react-redux";
+import { getAllTasks } from "../Home/redux/actions";
 
-function Tasks(params) {
-  const [tasks, setTasks] = useState([]);
-
-  const fetchTasks = async () => {
-    const login = getItem("app-state").login;
-
-    try {
-      const response = await get("/tasks", {
-        headers: {
-          Authorization: `Bearer ${login.token}`
+function Tasks(props) {
+    const { homeState, getAllTasksDispatch } = props;
+    useEffect(() => {
+        if (homeState.data.length === 0) {
+            getAllTasksDispatch();
         }
-      });
-      setTasks(response.data)
-
-    } catch (e) {
-      console.log("error");
-    }
-  };
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
-  return (
-    <>
-      <Card
-        isLoading={false}
-        title={"Tüm görevlerim"}
-        content={tasks.map((t, index) => {
-          return <TaskItem key={index} description={t.description} />;
-        })}
-      />
-    </>
-  );
+    }, []);
+    return (
+        <>
+            <Card
+                isLoading={homeState.isFetching}
+                title={"Tüm görevlerim"}
+                content={homeState.data.map((t, index) => {
+                    return <TaskItem key={index} description={t.description} />;
+                })}
+            />
+        </>
+    );
 }
 
-export default Tasks;
+const mapStateToProps = (state) => {
+    return {
+        homeState: state.home,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getAllTasksDispatch: () => dispatch(getAllTasks()),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

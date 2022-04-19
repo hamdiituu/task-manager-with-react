@@ -5,7 +5,7 @@ export const getAllTasks = () => (dispatch) => {
     dispatch({
         type: types.TASKS_FETCHING,
     });
-    get("/tsks")
+    get("/tasks")
         .then(({ data, status }) => {
             if (status !== 200) {
                 throw data;
