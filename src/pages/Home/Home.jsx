@@ -5,8 +5,10 @@ import { get } from "../../utils/networking";
 
 function Home(params) {
   const [tasks, setTasks] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   const fetchTasks = async () => {
+    setLoading(true);
     const login = getItem("app-state").login;
 
     try {
@@ -20,6 +22,7 @@ function Home(params) {
     } catch (e) {
       console.log("error");
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -36,7 +39,7 @@ function Home(params) {
         })}
       />
       <Card
-        isLoading={false}
+        isLoading={isLoading}
         title={"Tamamlanmış görevlerim"}
         content={tasks.filter(t => t.completed).map((t, index) => {
           return <TaskItem key={index} description={t.description} />;
