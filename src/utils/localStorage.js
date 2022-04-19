@@ -11,7 +11,7 @@ export function getItem(key, callback = null) {
   if (callback) {
     localItem = callback(localItem);
   }
-  return localItem;
+  return JSON.parse(localItem);
 }
 
 export function removeItem(key) {

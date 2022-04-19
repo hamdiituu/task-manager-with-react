@@ -7,7 +7,7 @@ const instance = axios.create({
 //response middleware
 instance.interceptors.response.use(
   (response) => {
-    console.log("--response", response);
+    // console.log("--response", response);
     return response;
   },
   (error) => {
@@ -27,7 +27,7 @@ instance.interceptors.response.use(
 //request middleware
 instance.interceptors.request.use(
   (request) => {
-    console.log("--request", request);
+    // console.log("--request", request);
     return request;
   },
   (error) => {
@@ -36,12 +36,7 @@ instance.interceptors.request.use(
 );
 
 export const get = (url, params = null) => {
-  return instance.get(url, {
-    params: params,
-    //   headers: {
-    //     Authorization: "Bearer " + _getToken(),
-    //   },
-  });
+  return instance.get(url, params);
 };
 
 export const post = (url, params = null) => {

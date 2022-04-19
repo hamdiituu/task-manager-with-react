@@ -1,4 +1,4 @@
-function TaskItem(params) {
+function TaskItem({ description }) {
   return (
     <div className="d-flex text-muted pt-3">
       {/* <svg
@@ -20,8 +20,7 @@ function TaskItem(params) {
 
       <p className="pb-3 mb-0 small lh-sm border-bottom">
         <strong className="d-block text-gray-dark">@username</strong>
-        Some representative placeholder content, with some information about
-        this user. Imagine this being some sort of status update, perhaps?
+        {description}
       </p>
     </div>
   );

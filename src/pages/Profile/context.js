@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { get } from "../../utils/networking";
+import { getItem } from "../../utils/localStorage";
 
 export const ProfileContext = React.createContext({});
 
@@ -11,10 +12,15 @@ const ProfileProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const fetchUser = async () => {
-        console.log("calling fetch user");
+        // console.log("calling fetch user");
         setFetching(true);
         try {
-            const { data, status } = await get("/users/me");
+            const { data, status } = await get("/users/me", {
+                headers: {
+                    Authorization: `Bearer ${getItem("app-state").login.token}`
+                }
+            });
+
             if (status !== 200) {
                 throw data;
             }

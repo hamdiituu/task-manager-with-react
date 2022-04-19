@@ -10,7 +10,7 @@ function Card({ title, content, bottomWidget, topWidget, isLoading }) {
         <div className="border-bottom" />
         {content}
         {isLoading && (
-          <div class="d-flex justify-content-center mt-5 mb-5">
+          <div className="d-flex justify-content-center mt-5 mb-5">
             <BorderSpinner theme="primary" />
           </div>
         )}
