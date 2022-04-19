@@ -24,6 +24,9 @@ import { post } from "../../../utils/networking";
 // };
 
 export const login = (params) => (dispatch, getState) => {
+    dispatch({
+        type: types.LOGIN_FETCHING,
+    });
     //console.log(lastName);
     post("/users/login", params)
         .then(({ data, status }) => {

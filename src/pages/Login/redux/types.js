@@ -1,3 +1,4 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILERE = "LOGIN_FAILERE";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const LOGIN_FETCHING = "LOGIN_FETCHING";
