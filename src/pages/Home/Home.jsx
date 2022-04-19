@@ -1,54 +1,58 @@
-import { Card, TaskItem } from "../../components";
+import { Card, TaskItem, Alert } from "../../components";
 import { useState, useEffect } from "react";
-import { getItem } from "../../utils/localStorage";
 import { get } from "../../utils/networking";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllTasks } from "./redux/actions";
+
 function Home(params) {
-    const [tasks, setTasks] = useState([]);
-    const [isLoading, setLoading] = useState(false);
-    const loginState = useSelector((s) => s.login);
-
-    const fetchTasks = async () => {
-        setLoading(true);
-        // const login = getItem("app-state").login;
-
-        try {
-            const response = await get("/tasks");
-            setTasks(response.data);
-        } catch (e) {
-            console.log("error");
-        }
-        setLoading(false);
-    };
+    const dispatch = useDispatch();
+    const { isFetching, data, isError, message } = useSelector((s) => s.home);
 
     useEffect(() => {
-        fetchTasks();
+        dispatch(getAllTasks());
     }, []);
 
     return (
         <>
-            <Card
-                isLoading={false}
-                title={"Tamamlanmamış görevlerim"}
-                content={tasks
-                    .filter((t) => !t.completed)
-                    .map((t, index) => {
-                        return (
-                            <TaskItem key={index} description={t.description} />
-                        );
-                    })}
-            />
-            <Card
-                isLoading={isLoading}
-                title={"Tamamlanmış görevlerim"}
-                content={tasks
-                    .filter((t) => t.completed)
-                    .map((t, index) => {
-                        return (
-                            <TaskItem key={index} description={t.description} />
-                        );
-                    })}
-            />
+            {isError && (
+                <div className="d-flex justify-content-center">
+                    <div className="col-11">
+                        <Alert theme={"danger"}>{message}</Alert>
+                    </div>
+                </div>
+            )}
+            {!isError && (
+                <>
+                    <Card
+                        isLoading={isFetching}
+                        title={"Tamamlanmamış görevlerim"}
+                        content={data
+                            .filter((t) => !t.completed)
+                            .map((t, index) => {
+                                return (
+                                    <TaskItem
+                                        key={index}
+                                        description={t.description}
+                                    />
+                                );
+                            })}
+                    />
+                    <Card
+                        isLoading={isFetching}
+                        title={"Tamamlanmış görevlerim"}
+                        content={data
+                            .filter((t) => t.completed)
+                            .map((t, index) => {
+                                return (
+                                    <TaskItem
+                                        key={index}
+                                        description={t.description}
+                                    />
+                                );
+                            })}
+                    />
+                </>
+            )}
         </>
     );
 }
