@@ -2,21 +2,18 @@ import { Card, TaskItem } from "../../components";
 import { useState, useEffect } from "react";
 import { getItem } from "../../utils/localStorage";
 import { get } from "../../utils/networking";
-
+import { useSelector } from "react-redux";
 function Home(params) {
     const [tasks, setTasks] = useState([]);
     const [isLoading, setLoading] = useState(false);
+    const loginState = useSelector((s) => s.login);
 
     const fetchTasks = async () => {
         setLoading(true);
-        const login = getItem("app-state").login;
+        // const login = getItem("app-state").login;
 
         try {
-            const response = await get("/tasks", {
-                headers: {
-                    Authorization: `Bearer ${login.token}`,
-                },
-            });
+            const response = await get("/tasks");
             setTasks(response.data);
         } catch (e) {
             console.log("error");
