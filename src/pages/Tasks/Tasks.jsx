@@ -1,29 +1,29 @@
 import { Card, TaskItem } from "../../components";
 import { useEffect, useState } from "react";
+import { getItem } from "../../utils/localStorage";
+import { get } from "../../utils/networking";
 
 function Tasks(params) {
   const [tasks, setTasks] = useState([]);
 
-  const getTasks = async () => {
-    const login = JSON.parse(localStorage.getItem("react-local-app-state")).login;
+  const fetchTasks = async () => {
+    const login = getItem("app-state").login;
 
     try {
-      const response = await fetch("https://task-manager-cagri.herokuapp.com/tasks", {
+      const response = await get("/tasks", {
         headers: {
           Authorization: `Bearer ${login.token}`
         }
       });
-      const json = response.json();
-      json.then(data => {
-        setTasks(data)
-      })
+      setTasks(response.data)
+
     } catch (e) {
       console.log("error");
     }
   };
 
   useEffect(() => {
-    getTasks();
+    fetchTasks();
   }, []);
 
   return (

@@ -1,5 +1,6 @@
 import { Card, Alert } from "../../components";
 import ProfileProvider, { ProfileContext } from "./context";
+
 function Profile(params) {
     return (
         <ProfileProvider>
